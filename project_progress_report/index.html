@@ -68,12 +68,25 @@
       </section>
 
       <section class="section">
+        <h3>How to Read the Headline Numbers</h3>
+        <p>
+          These four headline metrics describe the most updated retained model in the current project.
+          It is the relaxed base-pool correlated-suburb model with overlap=2, building-bedroom level prediction, unit adjustment, and post-estimation validation.
+        </p>
+        <p>
+          Raw coverage means the share of test rows that receive a prediction before uncertainty filtering.
+          Retained coverage means the share of all test rows that remain after the validator removes uncertain predictions.
+          Post-filter MAPE is the error on that retained, higher-confidence subset.
+        </p>
+      </section>
+
+      <section class="section">
         <h3>What This Report Covers</h3>
         <ul>
-          <li>AI-suggested base-suburb robust regression experiments.</li>
+          <li>AI-suggested Methods 1-6 for base-suburb rental estimation.</li>
           <li>The retained correlated-suburb method with sync adjustment, unit adjustment, and post-estimation validation.</li>
           <li>Within-building variance analysis used to judge whether individual errors are unusually large.</li>
-          <li>Key figures, including MAPE by history month and retained share using the full test set as denominator.</li>
+          <li>Key figures, especially retained share and MAPE by history threshold using the full test set as denominator.</li>
         </ul>
       </section>
 

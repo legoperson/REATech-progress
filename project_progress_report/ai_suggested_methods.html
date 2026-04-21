@@ -27,20 +27,45 @@
         <h2>Problem, Method, and Result</h2>
         <p>
           Problem: we needed a clean comparison set of base-suburb estimation methods that can be evaluated separately from the retained production-style model.
-          Method: two robust regression variants were tested: Static + Huber and Rolling 36 Months + Huber.
-          Result: Static Huber performed better in this experiment, with higher coverage and lower MAPE than the rolling-window Huber version.
+          Method: the initial screening implemented Methods 1-6, covering static OLS, rolling OLS, time-decay weighted OLS, static robust regression, rolling robust regression, and rolling robust regression with fallback.
+          Result: the first screening had very low coverage because it intentionally used a clean, strict method setup; later focused reruns of Method 4 and Method 5 used the imputed base space and lag expansion more practically.
         </p>
       </section>
 
       <section class="metric-grid">
+        <div class="metric"><div class="label">Initial Methods Tested</div><div class="value">1-6</div></div>
+        <div class="metric"><div class="label">Best Initial MAPE</div><div class="value">2.70%</div></div>
         <div class="metric"><div class="label">Method 4 Coverage</div><div class="value">94.70%</div></div>
         <div class="metric"><div class="label">Method 4 MAPE</div><div class="value">8.08%</div></div>
-        <div class="metric"><div class="label">Method 5 Coverage</div><div class="value">75.42%</div></div>
-        <div class="metric"><div class="label">Method 5 MAPE</div><div class="value">8.71%</div></div>
       </section>
 
       <section class="section">
-        <h3>Method 4: Static + Huber</h3>
+        <h3>Initial Screening: Methods 1-6</h3>
+        <p>
+          The initial Methods 1-6 screening was designed as a clean method comparison. Because it avoided some of the later imputation and practical fallback logic, coverage was extremely low, so these results should be read as method diagnostics rather than deployable model performance.
+        </p>
+        <table class="result-table">
+          <thead>
+            <tr>
+              <th>Method</th>
+              <th>Description</th>
+              <th>Coverage</th>
+              <th>MAPE</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>Static + OLS</td><td>0.25%</td><td>6.62%</td></tr>
+            <tr><td>2</td><td>Rolling Selection + OLS, 12m</td><td>0.08%</td><td>2.70%</td></tr>
+            <tr><td>3</td><td>Time-Decay Weighted OLS</td><td>0.25%</td><td>6.67%</td></tr>
+            <tr><td>4</td><td>Static + Huber</td><td>0.25%</td><td>6.33%</td></tr>
+            <tr><td>5</td><td>Rolling + Huber, 12m</td><td>0.08%</td><td>5.58%</td></tr>
+            <tr><td>6</td><td>Rolling + Huber + Fallback</td><td>0.08%</td><td>7.64%</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="section">
+        <h3>Focused Rerun: Method 4 Static + Huber</h3>
         <ul>
           <li>Static suburb selection.</li>
           <li>Uses the imputed base-suburb space.</li>
@@ -53,7 +78,7 @@
       </section>
 
       <section class="section">
-        <h3>Method 5: Rolling 36 Months + Huber</h3>
+        <h3>Focused Rerun: Method 5 Rolling 36 Months + Huber</h3>
         <ul>
           <li>Re-selects suburbs inside a rolling 36-month window.</li>
           <li>Uses the imputed base-suburb space.</li>
@@ -68,8 +93,8 @@
       <section class="section">
         <h3>Takeaway</h3>
         <p>
-          The main takeaway is that the static Huber approach is currently more stable than the rolling 36-month Huber approach.
-          In this setup, the rolling window did not improve accuracy and reduced coverage.
+          The main takeaway is that the first Methods 1-6 screening was useful for comparing model ideas, but the coverage was too low for deployment.
+          In the more practical focused reruns, Method 4 static Huber was more stable than Method 5 rolling Huber, with higher coverage and lower MAPE.
         </p>
       </section>
     </main>

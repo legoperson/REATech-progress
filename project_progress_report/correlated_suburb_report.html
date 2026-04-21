@@ -40,6 +40,19 @@
       </section>
 
       <section class="section">
+        <h3>What the Headline Metrics Mean</h3>
+        <p>
+          These numbers are the current best and most updated retained model results.
+          The model first predicts at the building-bedroom-month level, then applies unit-level adjustment, and finally runs a post-estimation validator to remove predictions whose relationship to the suburb median looks unstable.
+        </p>
+        <p>
+          Raw coverage is the prediction rate before filtering.
+          Retained coverage is the share of all test rows that remain after uncertainty filtering.
+          Post-filter MAPE is calculated only on those retained predictions, so it should be read as the error for the higher-confidence output set.
+        </p>
+      </section>
+
+      <section class="section">
         <h3>Latest Method Settings</h3>
         <ul>
           <li>Test subset: <code>pia</code> with date <code>&gt;= 2023-01-01</code>.</li>
@@ -59,12 +72,6 @@
           Long-history targets no longer fail just because the required number of suburbs exceeds the available pool.
           If the strict stable pool is empty, the method now falls back to a relaxed scored suburb pool.
         </p>
-      </section>
-
-      <section class="figure-card">
-        <h4>Exact history-month MAPE</h4>
-        <p>This figure shows how MAPE changes by exact history-month group before and after the post-estimation filter.</p>
-        <img src="./images/correlated_suburb_sync_adjust_overlap2_hist_ge_2_postprocessed_history_2_30_mape.png" alt="Exact history month MAPE" />
       </section>
 
       <section class="figure-card">

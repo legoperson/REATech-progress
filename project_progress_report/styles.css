@@ -187,6 +187,35 @@ body {
   border-radius: 8px;
 }
 
+.result-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0 18px;
+  overflow: hidden;
+  border-radius: 16px;
+  font-size: 14px;
+}
+
+.result-table th,
+.result-table td {
+  padding: 11px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+}
+
+.result-table th {
+  background: rgba(203, 95, 46, 0.10);
+  color: var(--accent-deep);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.result-table td {
+  background: rgba(255,255,255,0.62);
+  color: var(--muted);
+}
+
 .toplink {
   display: inline-block;
   margin-top: 8px;
