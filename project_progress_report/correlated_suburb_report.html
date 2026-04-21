@@ -46,6 +46,7 @@
           The model first predicts at the building-bedroom-month level, then applies unit-level adjustment, and finally runs a post-estimation validator to remove predictions whose relationship to the suburb median looks unstable.
         </p>
         <p>
+          Overlap=2 means a candidate base series only needs at least two historical overlapping observations with the target building-bedroom series before it can be considered.
           Raw coverage is the prediction rate before filtering.
           Retained coverage is the share of all test rows that remain after uncertainty filtering.
           Post-filter MAPE is calculated only on those retained predictions, so it should be read as the error for the higher-confidence output set.
@@ -57,7 +58,7 @@
         <ul>
           <li>Test subset: <code>pia</code> with date <code>&gt;= 2023-01-01</code>.</li>
           <li>Evaluation subset: <code>history_months &gt;= 2</code>.</li>
-          <li>Overlap threshold: <code>2</code>.</li>
+          <li>Overlap threshold: <code>2</code>, meaning at least two overlapping historical observations are required between target and candidate base.</li>
           <li>Candidate base: <code>suburb + property_type + bedroom</code>.</li>
           <li>Lags: <code>lag0</code>, <code>lag1</code>, <code>lag2</code>, <code>lag3</code>.</li>
           <li>Weight constraints: nonnegative, sum to 1, same-suburb total weight <code>&lt;= 0.4</code>.</li>

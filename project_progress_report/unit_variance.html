@@ -33,10 +33,19 @@
       </section>
 
       <section class="metric-grid">
-        <div class="metric"><div class="label">All unit, bed=2 rows</div><div class="value">94,995</div></div>
-        <div class="metric"><div class="label">Valid rows</div><div class="value">35,120</div></div>
+        <div class="metric"><div class="label">Distribution Rows</div><div class="value">72,871</div></div>
+        <div class="metric"><div class="label">Building-Month Groups</div><div class="value">20,675</div></div>
         <div class="metric"><div class="label">Median % Deviation</div><div class="value">1.92%</div></div>
         <div class="metric"><div class="label">P90 % Deviation</div><div class="value">8.37%</div></div>
+      </section>
+
+      <section class="figure-card">
+        <h4>Distribution of deviation from building-month median</h4>
+        <p>
+          This chart shows what share of 2-bedroom unit records fall into each absolute deviation bucket relative to their same-building same-month median.
+          About 61.1% are within 2% of the median and about 82.3% are within 5%.
+        </p>
+        <img src="./images/unit_variance_same_building_bed2_deviation_distribution.png" alt="Within-building deviation distribution" />
       </section>
 
       <section class="section">
@@ -52,6 +61,9 @@
         <h3>Source Files</h3>
         <p class="file-list">
           Summary table: <code>unit_variance_same_building_bed2_summary.csv</code>
+        </p>
+        <p class="file-list">
+          Distribution table: <code>unit_variance_same_building_bed2_deviation_distribution.csv</code>
         </p>
         <p class="file-list">
           Example records: <code>unit_variance_same_building_bed2_examples.csv</code>

@@ -42,6 +42,7 @@
       <section class="section">
         <h3>Initial Screening: Methods 1-6</h3>
         <p>
+          "AI suggested" means these six method ideas were proposed as candidate approaches for handling changing suburb relationships, outliers, and prediction stability.
           The initial Methods 1-6 screening was designed as a clean method comparison. Because it avoided some of the later imputation and practical fallback logic, coverage was extremely low, so these results should be read as method diagnostics rather than deployable model performance.
         </p>
         <table class="result-table">
@@ -62,6 +63,18 @@
             <tr><td>6</td><td>Rolling + Huber + Fallback</td><td>0.08%</td><td>7.64%</td></tr>
           </tbody>
         </table>
+      </section>
+
+      <section class="section">
+        <h3>What Each Method Means</h3>
+        <ul>
+          <li><strong>Method 1: Static + OLS.</strong> Selects correlated suburb median-rent series using all historical data, then fits ordinary least squares.</li>
+          <li><strong>Method 2: Rolling Selection + OLS.</strong> Recomputes suburb correlations inside a recent rolling window, then fits ordinary least squares.</li>
+          <li><strong>Method 3: Time-Decay Weighted OLS.</strong> Uses all historical data but gives more recent observations more influence through exponential time decay.</li>
+          <li><strong>Method 4: Static + Robust Regression.</strong> Keeps static suburb selection but replaces OLS with Huber regression to reduce the influence of outliers.</li>
+          <li><strong>Method 5: Rolling + Robust.</strong> Combines rolling suburb selection with Huber regression to address both relationship drift and outliers.</li>
+          <li><strong>Method 6: Rolling + Robust + Fallback.</strong> Adds a fallback rule to Method 5 for cases where the robust prediction appears unstable.</li>
+        </ul>
       </section>
 
       <section class="section">
