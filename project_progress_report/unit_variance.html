@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Within-Building Variance</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="brand">Static Project Report</div>
+      <h1>Within-Building Variance</h1>
+      <p>This page quantifies natural rent variation between units in the same building, month, and bedroom group.</p>
+      <nav class="nav">
+        <a href="./index.html"><div class="title">Progress Summary</div><div class="desc">Back to the report home page.</div></a>
+        <a href="./ai_suggested_methods.html"><div class="title">AI Suggested Methods</div><div class="desc">Open alternative method experiments.</div></a>
+        <a href="./correlated_suburb_report.html"><div class="title">Correlated-Suburb Report</div><div class="desc">Open the retained model chapter.</div></a>
+        <a href="./unit_variance.html"><div class="title">Within-Building Variance</div><div class="desc">Current page.</div></a>
+      </nav>
+    </aside>
+    <main class="content">
+      <section class="hero">
+        <h2>Problem, Method, and Result</h2>
+        <p>
+          Problem: when a single test record has a large error, we need to know whether this reflects model failure or normal unit-level variation.
+          Method: for 2-bedroom units, each observed rent is compared with the median rent for the same building, month, and bedroom group.
+          Result: the median absolute percentage deviation is only 1.92%, and the 90th percentile is about 8.37%, meaning most within-building deviations are small.
+        </p>
+      </section>
+
+      <section class="metric-grid">
+        <div class="metric"><div class="label">All unit, bed=2 rows</div><div class="value">94,995</div></div>
+        <div class="metric"><div class="label">Valid rows</div><div class="value">35,120</div></div>
+        <div class="metric"><div class="label">Median % Deviation</div><div class="value">1.92%</div></div>
+        <div class="metric"><div class="label">P90 % Deviation</div><div class="value">8.37%</div></div>
+      </section>
+
+      <section class="section">
+        <h3>Interpretation</h3>
+        <ul>
+          <li>Natural variation within the same building, month, and bedroom group is usually modest.</li>
+          <li>If a record differs from the building-month median by more than 20%, it is already well above typical within-building dispersion.</li>
+          <li>Very large single-record errors should therefore be checked for data-quality issues or model-mechanism problems, not only explained as normal unit variation.</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h3>Source Files</h3>
+        <p class="file-list">
+          Summary table: <code>unit_variance_same_building_bed2_summary.csv</code>
+        </p>
+        <p class="file-list">
+          Example records: <code>unit_variance_same_building_bed2_examples.csv</code>
+        </p>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

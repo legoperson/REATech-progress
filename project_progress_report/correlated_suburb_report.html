@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Correlated-Suburb Report</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="brand">Static Project Report</div>
+      <h1>Correlated-Suburb Report</h1>
+      <p>This page summarizes the retained correlated-suburb model, focusing on the latest relaxed base-pool overlap=2 version and its postprocessing results.</p>
+      <nav class="nav">
+        <a href="./index.html"><div class="title">Progress Summary</div><div class="desc">Back to the report home page.</div></a>
+        <a href="./ai_suggested_methods.html"><div class="title">AI Suggested Methods</div><div class="desc">Open alternative method experiments.</div></a>
+        <a href="./correlated_suburb_report.html"><div class="title">Correlated-Suburb Report</div><div class="desc">Current page.</div></a>
+        <a href="./unit_variance.html"><div class="title">Within-Building Variance</div><div class="desc">Open the unit variance diagnostic.</div></a>
+      </nav>
+    </aside>
+    <main class="content">
+      <section class="hero">
+        <h2>Problem, Method, and Result</h2>
+        <p>
+          Problem: we need to estimate building-bedroom rent using suburb-level base series while handling different history lengths, limited base pools, and uncertain predictions.
+          Method: the retained approach combines correlated suburb selection, lag expansion, suburb sync adjustment, unit adjustment, and post-estimation validation.
+          Result: the latest relaxed base-pool overlap=2 version reached 99.67% raw coverage, retained 83.32% after filtering, and achieved 6.70% post-filter MAPE.
+        </p>
+      </section>
+
+      <section class="metric-grid">
+        <div class="metric"><div class="label">n_test</div><div class="value">15410</div></div>
+        <div class="metric"><div class="label">Raw Coverage</div><div class="value">99.67%</div></div>
+        <div class="metric"><div class="label">Retained Coverage</div><div class="value">83.32%</div></div>
+        <div class="metric"><div class="label">Post-Filter MAPE</div><div class="value">6.70%</div></div>
+      </section>
+
+      <section class="section">
+        <h3>Latest Method Settings</h3>
+        <ul>
+          <li>Test subset: <code>pia</code> with date <code>&gt;= 2023-01-01</code>.</li>
+          <li>Evaluation subset: <code>history_months &gt;= 2</code>.</li>
+          <li>Overlap threshold: <code>2</code>.</li>
+          <li>Candidate base: <code>suburb + property_type + bedroom</code>.</li>
+          <li>Lags: <code>lag0</code>, <code>lag1</code>, <code>lag2</code>, <code>lag3</code>.</li>
+          <li>Weight constraints: nonnegative, sum to 1, same-suburb total weight <code>&lt;= 0.4</code>.</li>
+          <li>Broader base-pool thresholds: minimum months 6, minimum coverage ratio 0.35, minimum monthly count 1.</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h3>What Changed From the Earlier Strict Version</h3>
+        <p>
+          The most important change was not a new model family. Instead, the base pool and long-history requirements were relaxed.
+          Long-history targets no longer fail just because the required number of suburbs exceeds the available pool.
+          If the strict stable pool is empty, the method now falls back to a relaxed scored suburb pool.
+        </p>
+      </section>
+
+      <section class="figure-card">
+        <h4>Exact history-month MAPE</h4>
+        <p>This figure shows how MAPE changes by exact history-month group before and after the post-estimation filter.</p>
+        <img src="./images/correlated_suburb_sync_adjust_overlap2_hist_ge_2_postprocessed_history_2_30_mape.png" alt="Exact history month MAPE" />
+      </section>
+
+      <section class="figure-card">
+        <h4>Retained Share and MAPE by History Threshold</h4>
+        <p>This figure fixes the denominator as all test rows and shows retained share and MAPE under different history thresholds. This is the recommended reporting view.</p>
+        <img src="./images/correlated_suburb_sync_adjust_overlap2_hist_ge_2_global_denominator_threshold_dual_axis.png" alt="Global denominator threshold plot" />
+      </section>
+
+      <section class="section">
+        <h3>Earlier Cap04 version</h3>
+        <p>
+          The earlier Cap04 version used stricter candidate suburb rules and therefore had much lower coverage.
+          It is useful as a comparison point because it shows that the coverage issue was mainly driven by pool and requirement settings rather than the correlated-suburb idea itself.
+        </p>
+        <img src="./images/correlated_suburb_sync_adjust_hist_ge_6_min6suburbs_cap04_history_2_20_mape.png" alt="Cap04 history month MAPE" style="width:100%;border-radius:18px;border:1px solid rgba(31,43,32,0.12);" />
+      </section>
+    </main>
+  </div>
+</body>
+</html>

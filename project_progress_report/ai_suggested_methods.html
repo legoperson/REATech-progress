@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Suggested Methods</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="brand">Static Project Report</div>
+      <h1>AI Suggested Methods</h1>
+      <p>This page records standalone AI-suggested base-suburb experiments, separate from the retained correlated-suburb model.</p>
+      <nav class="nav">
+        <a href="./index.html"><div class="title">Progress Summary</div><div class="desc">Back to the report home page.</div></a>
+        <a href="./ai_suggested_methods.html"><div class="title">AI Suggested Methods</div><div class="desc">Current page.</div></a>
+        <a href="./correlated_suburb_report.html"><div class="title">Correlated-Suburb Report</div><div class="desc">Open the retained model chapter.</div></a>
+        <a href="./unit_variance.html"><div class="title">Within-Building Variance</div><div class="desc">Open the unit variance diagnostic.</div></a>
+      </nav>
+    </aside>
+    <main class="content">
+      <section class="hero">
+        <h2>Problem, Method, and Result</h2>
+        <p>
+          Problem: we needed a clean comparison set of base-suburb estimation methods that can be evaluated separately from the retained production-style model.
+          Method: two robust regression variants were tested: Static + Huber and Rolling 36 Months + Huber.
+          Result: Static Huber performed better in this experiment, with higher coverage and lower MAPE than the rolling-window Huber version.
+        </p>
+      </section>
+
+      <section class="metric-grid">
+        <div class="metric"><div class="label">Method 4 Coverage</div><div class="value">94.70%</div></div>
+        <div class="metric"><div class="label">Method 4 MAPE</div><div class="value">8.08%</div></div>
+        <div class="metric"><div class="label">Method 5 Coverage</div><div class="value">75.42%</div></div>
+        <div class="metric"><div class="label">Method 5 MAPE</div><div class="value">8.71%</div></div>
+      </section>
+
+      <section class="section">
+        <h3>Method 4: Static + Huber</h3>
+        <ul>
+          <li>Static suburb selection.</li>
+          <li>Uses the imputed base-suburb space.</li>
+          <li>Uses lag-expanded features.</li>
+          <li>Regression model: <code>HuberRegressor</code>.</li>
+        </ul>
+        <p class="file-list">
+          Result: <code>n_test = 14136</code>, <code>n_covered = 13387</code>, <code>coverage_ratio = 0.947015</code>, <code>MAPE = 0.080847</code>.
+        </p>
+      </section>
+
+      <section class="section">
+        <h3>Method 5: Rolling 36 Months + Huber</h3>
+        <ul>
+          <li>Re-selects suburbs inside a rolling 36-month window.</li>
+          <li>Uses the imputed base-suburb space.</li>
+          <li>Uses lag-expanded features.</li>
+          <li>Regression model: <code>HuberRegressor</code>.</li>
+        </ul>
+        <p class="file-list">
+          Result: <code>n_test = 14136</code>, <code>n_covered = 10662</code>, <code>coverage_ratio = 0.754244</code>, <code>MAPE = 0.087149</code>.
+        </p>
+      </section>
+
+      <section class="section">
+        <h3>Takeaway</h3>
+        <p>
+          The main takeaway is that the static Huber approach is currently more stable than the rolling 36-month Huber approach.
+          In this setup, the rolling window did not improve accuracy and reduced coverage.
+        </p>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

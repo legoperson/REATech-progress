@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rental Prediction Project Hub</title>
+  <style>
+    :root {
+      --bg: #f6f2e8;
+      --panel: rgba(255, 250, 242, 0.94);
+      --ink: #1f2b20;
+      --muted: #5e675f;
+      --accent: #cb5f2e;
+      --accent-deep: #8a2f15;
+      --line: rgba(31, 43, 32, 0.12);
+      --shadow: 0 18px 48px rgba(53, 44, 28, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Space Grotesk", "Aptos", "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(203, 95, 46, 0.18), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(121, 144, 91, 0.14), transparent 24%),
+        var(--bg);
+    }
+
+    .wrap {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 40px 20px 56px;
+    }
+
+    .eyebrow {
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-deep);
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(32px, 5vw, 54px);
+      line-height: 0.95;
+    }
+
+    .lead {
+      max-width: 760px;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 16px;
+      margin-bottom: 28px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 18px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .card h2 {
+      margin: 0 0 10px;
+      font-size: 24px;
+    }
+
+    .card p {
+      margin: 0 0 16px;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    .tag {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(203, 95, 46, 0.12);
+      color: var(--accent-deep);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 16px;
+      border-radius: 999px;
+      text-decoration: none;
+      color: white;
+      background: linear-gradient(135deg, var(--accent), var(--accent-deep));
+      font-weight: 600;
+    }
+
+    .subnote {
+      margin-top: 28px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <div class="eyebrow">Rental Prediction Project</div>
+    <h1>Project Hub</h1>
+    <p class="lead">
+      This static web hub organizes the current rental prediction work into two public-facing areas.
+      The interactive platform is for map-based exploration, while the progress report summarizes model development,
+      experiment settings, key results, and diagnostic findings for team members or external reviewers.
+    </p>
+
+    <section class="grid">
+      <article class="card">
+        <div class="tag">Interactive</div>
+        <h2>Interactive Platform</h2>
+        <p>
+          This section keeps the original interactive map experience for exploring building-level rent outputs and spatial patterns.
+          It is useful for internal review, demonstrations, and quick visual checks of model outputs.
+        </p>
+        <a class="btn" href="./unit_prediction_map/index.html">Open Interactive Platform</a>
+      </article>
+
+      <article class="card">
+        <div class="tag">Progress Report</div>
+        <h2>Project Progress Report</h2>
+        <p>
+          This is a static report site summarizing the current progress of the unit rent prediction project.
+          It presents the problem, methods, results, and interpretation in a format that can be deployed directly online.
+        </p>
+        <a class="btn" href="./project_progress_report/index.html">Open Progress Report</a>
+      </article>
+    </section>
+
+    <p class="subnote">
+      Deployment folder: <code>web/</code>
+    </p>
+  </main>
+</body>
+</html>

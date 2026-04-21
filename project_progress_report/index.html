@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rental Prediction Progress Report</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="brand">Static Project Report</div>
+      <h1>Project Progress Report</h1>
+      <p>
+        This static site summarizes current progress on unit rent prediction.
+        Each page is written for team members and reviewers, with a clear focus on the problem, method, results, and interpretation.
+      </p>
+      <nav class="nav">
+        <a href="./index.html">
+          <div class="title">Progress Summary</div>
+          <div class="desc">A high-level overview of the current project status and main results.</div>
+        </a>
+        <a href="./ai_suggested_methods.html">
+          <div class="title">AI Suggested Methods</div>
+          <div class="desc">Static and rolling robust regression experiments using base-suburb predictors.</div>
+        </a>
+        <a href="./correlated_suburb_report.html">
+          <div class="title">Correlated-Suburb Report</div>
+          <div class="desc">The retained correlated-suburb model, relaxed base-pool update, and postprocessing results.</div>
+        </a>
+        <a href="./unit_variance.html">
+          <div class="title">Within-Building Variance</div>
+          <div class="desc">A diagnostic baseline for interpreting individual unit-level prediction errors.</div>
+        </a>
+      </nav>
+    </aside>
+
+    <main class="content">
+      <section class="hero">
+        <h2>Unit Rent Prediction Progress Report</h2>
+        <p>
+          Problem: the project now includes multiple model experiments, retained methods, postprocessing rules, and error diagnostics.
+          Method: this report turns the key materials into a static, deployable website with separate pages for methods, results, and interpretation.
+          Result: the latest retained correlated-suburb model reaches high raw coverage and keeps a low post-filter MAPE after uncertainty filtering.
+        </p>
+      </section>
+
+      <section class="metric-grid">
+        <div class="metric">
+          <div class="label">Current Retained Method</div>
+          <div class="value">Overlap = 2</div>
+        </div>
+        <div class="metric">
+          <div class="label">Raw Coverage</div>
+          <div class="value">99.67%</div>
+        </div>
+        <div class="metric">
+          <div class="label">Retained Coverage</div>
+          <div class="value">83.32%</div>
+        </div>
+        <div class="metric">
+          <div class="label">Post-Filter MAPE</div>
+          <div class="value">6.70%</div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h3>What This Report Covers</h3>
+        <ul>
+          <li>AI-suggested base-suburb robust regression experiments.</li>
+          <li>The retained correlated-suburb method with sync adjustment, unit adjustment, and post-estimation validation.</li>
+          <li>Within-building variance analysis used to judge whether individual errors are unusually large.</li>
+          <li>Key figures, including MAPE by history month and retained share using the full test set as denominator.</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h3>Recommended Reading Order</h3>
+        <ul>
+          <li>For the main model progress, start with the <a href="./correlated_suburb_report.html">Correlated-Suburb Report</a>.</li>
+          <li>For alternative baseline-style experiments, read <a href="./ai_suggested_methods.html">AI Suggested Methods</a>.</li>
+          <li>For interpreting large single-record errors, read <a href="./unit_variance.html">Within-Building Variance</a>.</li>
+        </ul>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
